@@ -4,7 +4,7 @@ axios.defaults.withCredentials = true;
 
 export const getTodos = async () => {
   try {
-    const response = await axios.get("api/todo", {
+    const response = await axios.get("http://52.79.236.2/api/todo", {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
     const result = response.data["todoList"].sort(
@@ -19,7 +19,7 @@ export const getTodos = async () => {
 
 export const getTodo = async (id) => {
   try {
-    const response = await axios.get(`api/detail/${id}`, {
+    const response = await axios.get(`http://52.79.236.2/api/detail/${id}`, {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
     return response.data["todo"];
@@ -45,7 +45,7 @@ export const postTodo = async (todo) => {
 
 export const changeTodo = async (id, todo) => {
   try {
-    await axios.put(`api/detail/${id}`, todo, {
+    await axios.put(`http://52.79.236.2/api/detail/${id}`, todo, {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
   } catch (error) {
@@ -56,7 +56,7 @@ export const changeTodo = async (id, todo) => {
 
 export const deleteTodo = async (id) => {
   try {
-    await axios.delete(`api/todo/${id}`, {
+    await axios.delete(`http://52.79.236.2/api/todo/${id}`, {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
   } catch (error) {
@@ -67,7 +67,7 @@ export const deleteTodo = async (id) => {
 
 export const completeTodo = async (id) => {
   try {
-    await axios.patch(`api/todo/${id}`, {
+    await axios.patch(`http://52.79.236.2/api/todo/${id}`, {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
   } catch (error) {
@@ -91,7 +91,7 @@ export const getCompleteTodos = async () => {
 
 export const login = async (userInfo) => {
   try {
-    await axios.post("api/login", userInfo, {
+    await axios.post("http://52.79.236.2/api/login", userInfo, {
       withCredentials: true,
     });
   } catch (error) {
@@ -102,7 +102,7 @@ export const login = async (userInfo) => {
 
 export const logout = async () => {
   try {
-    await axios.post("api/logout", {
+    await axios.post("http://52.79.236.2/api/logout", {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
   } catch (error) {
@@ -113,7 +113,7 @@ export const logout = async () => {
 
 export const signUp = async (userInfo) => {
   try {
-    await axios.post("api/signup", userInfo);
+    await axios.post("http://52.79.236.2/api/signup", userInfo);
   } catch (error) {
     console.log("SingUp Error : ", error);
     throw error;
@@ -122,7 +122,7 @@ export const signUp = async (userInfo) => {
 
 export const getUserInfo = async () => {
   try {
-    const response = await axios.get("api/auth", {
+    const response = await axios.get("http://52.79.236.2/api/auth", {
       headers: { Authorization: document.cookie.split("=")[1] },
     });
     return response.data["userInfo"];
